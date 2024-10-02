@@ -77,12 +77,12 @@ export default function RootLayout({
     </div>
 
     {/* <!-- Mobile Menu --> */}
-    <div class="mobile-menu hidden md:hidden">
-      <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Home</a>
-      <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">About</a>
-      <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Services</a>
-      <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Contact</a>
-      <a href="#" class="block py-2 px-4 text-sm bg-blue-500 text-white hover:bg-blue-400">Login</a>
+    <div className="mobile-menu hidden md:hidden">
+      <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">Home</a>
+      <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">About</a>
+      <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">Services</a>
+      <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">Contact</a>
+      <a href="#" className="block py-2 px-4 text-sm bg-blue-500 text-white hover:bg-blue-400">Login</a>
     </div>
   </nav>
         <Body>{children}</Body>
