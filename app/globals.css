@@ -16,6 +16,11 @@
     --foreground: #ededed;
   }
 }
+.custom-hover:hover {
+  background-color: #4b5563; /* Equivalent to gray-700 */
+  color: white; /* Text color on hover */
+}
+
 
 body {
   color: var(--foreground);
