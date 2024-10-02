@@ -45,7 +45,7 @@ const Navbar = ({}) => {
             </Link>
             {authens.Athen && <Link className={`text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
                   navact.active === 'Dashboard' ? 'bg-white text-gray-900' : 'bg-gray-800 text-gray-300'
-                }`} href={'http://localhost:3000/'+dashboard} >
+                }`} href={'https://myoption-git-master-rajapandiyan1s-projects.vercel.app/'+dashboard} >
                 Dashboard
             </Link>}
             
@@ -110,7 +110,7 @@ const Navbar = ({}) => {
                 navact.active === 'Dashboard' ? 'bg-white text-gray-800' : 'bg-gray-800 text-gray-300'
               }`}
               
-             href={'http://localhost:3000/'+dashboard}>
+             href={'https://myoption-git-master-rajapandiyan1s-projects.vercel.app/'+dashboard}>
             
               Dashboard
           
