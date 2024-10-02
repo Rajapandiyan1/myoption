@@ -15,7 +15,7 @@ function Qstart({ setqstart, id }) {
   const [showAnswer, setShowAnswer] = useState(false); // Track if the answer should be shown
   const [finished, setFinished] = useState(false); // Track if all questions have been viewed
   const [noQuestionsAvailable, setNoQuestionsAvailable] = useState(false); // Track if there are no questions
-  const dispatches=useDispatch();
+  const dispatches = useDispatch();
 
   useEffect(() => {
     // Fetch the Q&A data dynamically from API
@@ -29,7 +29,7 @@ function Qstart({ setqstart, id }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        if(data.authen!=undefined) return dispatches(setAthen({Athen:false}));
+        if (data.authen !== undefined) return dispatches(setAthen({ Athen: false }));
         setTopicsName(data.data.topics);
         setItem(data.data.QandA); // Assume QandA has question-answer array structure
 
@@ -43,7 +43,6 @@ function Qstart({ setqstart, id }) {
         }
       })
       .catch(() => {
-        
         setNoQuestionsAvailable(true); // Error fetching data, consider no questions available
       })
       .finally(() => {
@@ -65,44 +64,41 @@ function Qstart({ setqstart, id }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-100">
-      <h1 className="text-3xl font-bold mb-8">Topic: {topicsName}</h1>
+    <div className="d-flex flex-column justify-content-center align-items-center bg-light p-4">
+      <h1 className="h2 mb-4">Topic: {topicsName}</h1>
 
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="w-full max-w-xl bg-white rounded-lg shadow-md p-6">
+        <div className="w-100 max-w-xl bg-white rounded-lg shadow p-4">
           {noQuestionsAvailable ? (
             // Case when no questions are available
             <>
-            <p className="text-lg font-semibold mb-4 text-gray-600">No questions available.</p>
-            <p>Go to Edit Option After Add QandA</p>
+              <p className="h5 mb-4 text-muted">No questions available.</p>
+              <p>Go to Edit Option After Add Q&A</p>
             </>
           ) : finished ? (
-            <p className="text-lg font-semibold mb-4 text-gray-600">You have finished all the questions!</p>
+            <p className="h5 mb-4 text-muted">You have finished all the questions!</p>
           ) : (
             <div>
               {currentQuestion ? (
-                <div className="mb-4 p-4 border border-gray-300 rounded-lg">
-                  <h2 className="text-xl font-semibold mb-2">Q: {currentQuestion}</h2>
-                  {showAnswer && <p className="text-gray-700 mt-4">A: {currentAnswer}</p>}
+                <div className="mb-4 p-3 border border-secondary rounded">
+                  <h2 className="h5 mb-2">Q: {currentQuestion}</h2>
+                  {showAnswer && <p className="text-muted mt-2">A: {currentAnswer}</p>}
                 </div>
               ) : (
-                <>
                 <p>No questions available.</p>
-                
-                </>
               )}
             </div>
           )}
         </div>
       )}
 
-      <div className="mt-6 flex space-x-4">
+      <div className="mt-4 d-flex justify-content-between">
         {/* Show the Go Back button when finished or no questions are available */}
         {finished || noQuestionsAvailable ? (
           <button
-            className="px-6 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
+            className="btn btn-primary"
             onClick={() => setqstart(false)} // Go back
           >
             Go Back
@@ -112,7 +108,7 @@ function Qstart({ setqstart, id }) {
             {/* Show Answer Button */}
             {!showAnswer && (
               <button
-                className="px-6 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600"
+                className="btn btn-success"
                 onClick={() => setShowAnswer(true)}
               >
                 Show Answer
@@ -122,7 +118,7 @@ function Qstart({ setqstart, id }) {
             {/* Next Question Button */}
             {showAnswer && (
               <button
-                className="px-6 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
+                className="btn btn-primary"
                 onClick={handleNextQuestion}
               >
                 Next Question
