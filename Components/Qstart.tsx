@@ -105,7 +105,6 @@ function Qstart({ setqstart, id }) {
           </button>
         ) : (
           <>
-            {/* Show Answer Button */}
             {!showAnswer && !loading && (
               <button
                 className="btn btn-success"
