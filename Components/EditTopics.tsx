@@ -204,40 +204,40 @@ function EditTopics({ editId }) {
       )}
 
       {!loading && (
-        <h1 className='bg-light p-3 mt-5'>
-          Topics: <span className='font-weight-bold text-primary'>{topicsName}</span>
+        <h1 className="bg-light p-3 mt-5">
+          Topics: <span className="font-weight-bold text-primary">{topicsName}</span>
         </h1>
       )}
       {!loading && (
-        <div className='mt-4'>
-          <h3 className='h5 font-weight-bold mb-2'>Add New Question and Answer</h3>
-          <form onSubmit={addQandA} className='mb-4'>
-            <div className='form-group'>
-              <label className='form-label'>Question:</label>
+        <div className="mt-4">
+          <h3 className="h5 font-weight-bold mb-2">Add New Question and Answer</h3>
+          <form onSubmit={addQandA} className="mb-4">
+            <div className="form-group">
+              <label className="form-label">Question:</label>
               <input
-                type='text'
+                type="text"
                 value={newQuestion}
                 onChange={(e) => setNewQuestion(e.target.value)}
                 className={`form-control ${questionError ? 'is-invalid' : ''}`}
-                placeholder='Enter the question'
+                placeholder="Enter the question"
               />
-              {questionError && <div className='invalid-feedback'>{questionError}</div>}
+              {questionError && <div className="invalid-feedback">{questionError}</div>}
             </div>
-            <div className='form-group'>
-              <label className='form-label'>Answer:</label>
+            <div className="form-group">
+              <label className="form-label">Answer:</label>
               <input
-                type='text'
+                type="text"
                 value={newAnswer}
                 onChange={(e) => setNewAnswer(e.target.value)}
                 className={`form-control ${answerError ? 'is-invalid' : ''}`}
-                placeholder='Enter the answer'
+                placeholder="Enter the answer"
               />
-              {answerError && <div className='invalid-feedback'>{answerError}</div>}
+              {answerError && <div className="invalid-feedback">{answerError}</div>}
             </div>
-            <div className='d-flex justify-content-end'>
+            <div className="d-flex justify-content-end">
               <button
-                type='submit'
-                className='btn btn-success'
+                type="submit"
+                className="btn btn-success"
               >
                 Add Question and Answer
               </button>
@@ -247,105 +247,116 @@ function EditTopics({ editId }) {
       )}
 
       {item.length === 0 && !loading && (
-        <div className='d-flex justify-content-center mt-5'>
+        <div className="d-flex justify-content-center mt-5">
           <h1>Invalid Question and Answer</h1>
         </div>
       )}
       {loading && (
-        <div style={{ minHeight: '90vh' }} className='d-flex align-items-center justify-content-center bg-light'>
-          <div className='spinner-border text-primary' role='status'>
-            <span className='sr-only'>Loading...</span>
+        <div style={{ minHeight: '90vh' }} className="d-flex align-items-center justify-content-center bg-light">
+          <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Loading...</span>
           </div>
         </div>
       )}
-      <div className='mt-4'>
-        <h3 className='h5 font-weight-bold mb-3'>List of Questions and Answers</h3>
-        {item.map((data, index) => (
-          <div key={index} className='border rounded mb-2 p-3'>
-            <h4 className='h6'>{data.question}</h4>
-            <p>{data.answer}</p>
-            <div className='d-flex justify-content-end'>
-              <button onClick={() => openEditModal(index)} className='btn btn-primary mr-2'>
-                Edit
-              </button>
-              <button onClick={() => deleteQandA(index)} className='btn btn-danger'>
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Confirmation Modal */}
-      {isConfirmingDelete && (
-        <div className='modal show d-block' style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-          <div className='modal-dialog'>
-            <div className='modal-content'>
-              <div className='modal-header'>
-                <h5 className='modal-title'>Confirm Delete</h5>
-                <button onClick={() => setIsConfirmingDelete(false)} className='close'>
-                  <span>&times;</span>
-                </button>
-              </div>
-              <div className='modal-body'>
-                <p>Are you sure you want to delete this question and answer?</p>
-              </div>
-              <div className='modal-footer'>
-                <button onClick={() => setIsConfirmingDelete(false)} className='btn btn-secondary'>
-                  Cancel
-                </button>
-                <button onClick={confirmDeleteQandA} className='btn btn-danger'>
-                  Confirm Delete
-                </button>
-              </div>
-            </div>
-          </div>
+      {!loading && item.length > 0 && (
+        <div className="mt-4">
+          <h3 className="h5 font-weight-bold mb-2">Questions and Answers</h3>
+          <ul className="list-group">
+            {item.map((data, index) => (
+              <li key={index} className="list-group-item d-flex justify-content-between align-items-start">
+                <div>
+                  <h5 className="mb-1">{data.question}</h5>
+                  <p className="mb-1">{data.answer}</p>
+                </div>
+                <div>
+                  <button
+                    className="btn btn-warning me-2"
+                    onClick={() => openEditModal(index)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteQandA(index)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
       {/* Edit Modal */}
       {isEditing && (
-        <div className='modal show d-block' style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-          <div className='modal-dialog'>
-            <div className='modal-content'>
-              <div className='modal-header'>
-                <h5 className='modal-title'>Edit Question and Answer</h5>
-                <button onClick={closeEditModal} className='close'>
+        <div className="modal show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Edit Question and Answer</h5>
+                <button type="button" className="close" onClick={closeEditModal}>
                   <span>&times;</span>
                 </button>
               </div>
-              <form onSubmit={updateQandA} className='modal-body'>
-                <div className='form-group'>
-                  <label className='form-label'>Question:</label>
-                  <input
-                    type='text'
-                    value={newQuestion}
-                    onChange={(e) => setNewQuestion(e.target.value)}
-                    className={`form-control ${questionError ? 'is-invalid' : ''}`}
-                    placeholder='Enter the question'
-                  />
-                  {questionError && <div className='invalid-feedback'>{questionError}</div>}
-                </div>
-                <div className='form-group'>
-                  <label className='form-label'>Answer:</label>
-                  <input
-                    type='text'
-                    value={newAnswer}
-                    onChange={(e) => setNewAnswer(e.target.value)}
-                    className={`form-control ${answerError ? 'is-invalid' : ''}`}
-                    placeholder='Enter the answer'
-                  />
-                  {answerError && <div className='invalid-feedback'>{answerError}</div>}
-                </div>
-                <div className='modal-footer'>
-                  <button type='button' onClick={closeEditModal} className='btn btn-secondary'>
-                    Cancel
-                  </button>
-                  <button type='submit' className='btn btn-success'>
-                    Update Question and Answer
-                  </button>
-                </div>
-              </form>
+              <div className="modal-body">
+                <form onSubmit={updateQandA}>
+                  <div className="form-group">
+                    <label className="form-label">Question:</label>
+                    <input
+                      type="text"
+                      value={newQuestion}
+                      onChange={(e) => setNewQuestion(e.target.value)}
+                      className={`form-control ${questionError ? 'is-invalid' : ''}`}
+                      placeholder="Enter the question"
+                    />
+                    {questionError && <div className="invalid-feedback">{questionError}</div>}
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Answer:</label>
+                    <input
+                      type="text"
+                      value={newAnswer}
+                      onChange={(e) => setNewAnswer(e.target.value)}
+                      className={`form-control ${answerError ? 'is-invalid' : ''}`}
+                      placeholder="Enter the answer"
+                    />
+                    {answerError && <div className="invalid-feedback">{answerError}</div>}
+                  </div>
+                  <div className="d-flex justify-content-end">
+                    <button type="submit" className="btn btn-primary">
+                      Update
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Confirmation Modal */}
+      {isConfirmingDelete && (
+        <div className="modal show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Confirm Delete</h5>
+                <button type="button" className="close" onClick={() => setIsConfirmingDelete(false)}>
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <p>Are you sure you want to delete this question and answer?</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={() => setIsConfirmingDelete(false)}>
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-danger" onClick={confirmDeleteQandA}>
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
         </div>
