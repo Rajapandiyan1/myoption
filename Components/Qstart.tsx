@@ -106,7 +106,7 @@ function Qstart({ setqstart, id }) {
         ) : (
           <>
             {/* Show Answer Button */}
-            {!showAnswer && (
+            {!showAnswer && !loading && (
               <button
                 className="btn btn-success"
                 onClick={() => setShowAnswer(true)}
