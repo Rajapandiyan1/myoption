@@ -25,6 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+       <link href="https://cdn.tailwindcss.com" rel="stylesheet" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >

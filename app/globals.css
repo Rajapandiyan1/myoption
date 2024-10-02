@@ -1,3 +1,6 @@
+/* styles/tailwind.css */
+@import url("https://cdn.tailwindcss.com");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
