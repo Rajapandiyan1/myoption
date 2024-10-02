@@ -13,7 +13,7 @@ function EditTopics({ editId }) {
   const [answerError, setAnswerError] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
-  const dispatches =useDispatch();
+  const dispatches = useDispatch();
 
   // Toast state
   const [toastMessage, setToastMessage] = useState('');
@@ -25,7 +25,6 @@ function EditTopics({ editId }) {
   const [deleteIndex, setDeleteIndex] = useState(null);
 
   useEffect(() => {
-
     setLoading(true);
     fetch(`https://server-1-nu7h.onrender.com/topics/QandA/${editId}`, {
       method: 'GET',
@@ -36,8 +35,8 @@ function EditTopics({ editId }) {
     })
       .then((data) => data.json())
       .then((data) => {
-        if(data.authen!=undefined) return dispatches(setAthen({Athen:false}));
-        if(!data.ok) throw data
+        if (data.authen !== undefined) return dispatches(setAthen({ Athen: false }));
+        if (!data.ok) throw data;
         setTopicName(data.data.topics);
         setItem(data.data.QandA);
       })
@@ -67,7 +66,7 @@ function EditTopics({ editId }) {
     })
       .then((data) => data.json())
       .then((data) => {
-        if(data.authen!=undefined) return dispatches(setAthen({Athen:false}));
+        if (data.authen !== undefined) return dispatches(setAthen({ Athen: false }));
         if (!data.ok) throw data;
         setItem((prev) => {
           const updated = [...prev];
@@ -111,7 +110,7 @@ function EditTopics({ editId }) {
     })
       .then((data) => data.json())
       .then((data) => {
-        if(data.authen!=undefined) return dispatches(setAthen({Athen:false}));
+        if (data.authen !== undefined) return dispatches(setAthen({ Athen: false }));
         if (!data.ok) throw data;
         setItem((prev) => [...prev, { question: newQuestion, answer: newAnswer }]);
         setNewQuestion('');
@@ -168,7 +167,7 @@ function EditTopics({ editId }) {
     })
       .then((data) => data.json())
       .then((data) => {
-        if(data.authen!=undefined) return dispatches(setAthen({Athen:false}));
+        if (data.authen !== undefined) return dispatches(setAthen({ Athen: false }));
         if (!data.ok) throw data;
         setItem((prev) => {
           const updated = [...prev];
@@ -196,51 +195,49 @@ function EditTopics({ editId }) {
   }
 
   return (
-    <div>
+    <div className="container">
       {/* Toast Notification */}
       {showToast && (
-        <div className={`fixed top-20 right-5 px-4 py-2 rounded-md shadow-lg ${toastType === 'success' ? 'bg-green-500' : 'bg-red-500'} text-white`}>
+        <div className={`fixed top-20 right-5 px-4 py-2 rounded-md shadow-lg ${toastType === 'success' ? 'bg-success' : 'bg-danger'} text-white`}>
           {toastMessage}
         </div>
       )}
 
       {!loading && (
-        <h1 className='bg-gray-200 px-4 py-2 mt-5'>
-          Topics: <span className='font-semibold text-blue-800 uppercase'>{topicsName}</span>
+        <h1 className='bg-light p-3 mt-5'>
+          Topics: <span className='font-weight-bold text-primary'>{topicsName}</span>
         </h1>
       )}
       {!loading && (
-        <div className='mt-6'>
-          <h3 className='text-xl font-semibold mb-2'>Add New Question and Answer</h3>
-          <form onSubmit={addQandA} className='space-y-4'>
-            <div>
-              <label className='block text-gray-700'>Question:</label>
+        <div className='mt-4'>
+          <h3 className='h5 font-weight-bold mb-2'>Add New Question and Answer</h3>
+          <form onSubmit={addQandA} className='mb-4'>
+            <div className='form-group'>
+              <label className='form-label'>Question:</label>
               <input
                 type='text'
                 value={newQuestion}
                 onChange={(e) => setNewQuestion(e.target.value)}
-                className={`w-full px-4 py-2 border ${questionError ? 'border-red-500' : 'border-gray-300'
-                  } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={`form-control ${questionError ? 'is-invalid' : ''}`}
                 placeholder='Enter the question'
               />
-              {questionError && <p className='text-red-500 text-sm'>{questionError}</p>}
+              {questionError && <div className='invalid-feedback'>{questionError}</div>}
             </div>
-            <div>
-              <label className='block text-gray-700'>Answer:</label>
+            <div className='form-group'>
+              <label className='form-label'>Answer:</label>
               <input
                 type='text'
                 value={newAnswer}
                 onChange={(e) => setNewAnswer(e.target.value)}
-                className={`w-full px-4 py-2 border ${answerError ? 'border-red-500' : 'border-gray-300'
-                  } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={`form-control ${answerError ? 'is-invalid' : ''}`}
                 placeholder='Enter the answer'
               />
-              {answerError && <p className='text-red-500 text-sm'>{answerError}</p>}
+              {answerError && <div className='invalid-feedback'>{answerError}</div>}
             </div>
-            <div className='flex justify-end'>
+            <div className='d-flex justify-content-end'>
               <button
                 type='submit'
-                className='px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600 focus:outline-none'
+                className='btn btn-success'
               >
                 Add Question and Answer
               </button>
@@ -250,119 +247,105 @@ function EditTopics({ editId }) {
       )}
 
       {item.length === 0 && !loading && (
-        <div className='flex items-center justify-center mt-10'>
+        <div className='d-flex justify-content-center mt-5'>
           <h1>Invalid Question and Answer</h1>
         </div>
       )}
       {loading && (
-        <div style={{ minHeight: '90vh' }} className='flex items-center justify-center bg-gray-100'>
-          <div className='animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid border-blue-500 border-opacity-50'></div>
-        </div>
-      )}
-
-      {!loading && item.length !== 0 && (
-        <>
-          <div className='max-w-2xl p-6'>
-            <h1>Edit Topics</h1>
-            <h6 className='text-2xl font-semibold mb-4'>Questions and Answers</h6>
-
-            <ul className=''>
-              {item.map((item, index) => (
-                <li key={index} className='py-4 flex flex-col space-y-2'>
-                  <div>
-                    <p className='text-gray-600'>Question: {index + 1}</p>
-                    <h2 className='text-lg font-semibold text-gray-900'>{item.question} ?</h2>
-                    <p className='text-gray-600'>Answer <span className='font-bold text-gray-900'>:</span> </p>
-                    <p className='text-gray-600'>{item.answer}</p>
-                  </div>
-                  <div className='space-x-2'>
-                    <button
-                      className='px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none'
-                      onClick={() => openEditModal(index)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className='px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none'
-                      onClick={() => deleteQandA(index)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
-      )}
-
-      {isEditing && (
-        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 px-2'>
-          <div className='bg-white rounded-lg p-6 shadow-lg w-96'>
-            <h3 className='text-xl font-semibold mb-4'>Edit Question and Answer</h3>
-            <form className='space-y-4'>
-              <div>
-                <label className='block text-gray-700'>Question:</label>
-                <textarea
-                  value={newQuestion}
-                  onChange={(e) => setNewQuestion(e.target.value)}
-                  className={`w-full px-4 py-2 border ${questionError ? 'border-red-500' : 'border-gray-300'
-                    } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                  placeholder='Enter the question'
-                  rows={3}
-                />
-                {questionError && <p className='text-red-500 text-sm'>{questionError}</p>}
-              </div>
-              <div>
-                <label className='block text-gray-700'>Answer:</label>
-                <textarea
-                  value={newAnswer}
-                  onChange={(e) => setNewAnswer(e.target.value)}
-                  className={`w-full px-4 py-2 border ${answerError ? 'border-red-500' : 'border-gray-300'
-                    } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                  placeholder='Enter the answer'
-                  rows={4}
-                />
-                {answerError && <p className='text-red-500 text-sm'>{answerError}</p>}
-              </div>
-              <div className='flex justify-end'>
-                <button onClick={(e) => { updateQandA(e) }}
-                  type='submit'
-                  className='px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none'
-                >
-                  Update
-                </button>
-                <button
-                  type='button'
-                  className='px-4 py-2 text-gray-700 bg-gray-300 rounded hover:bg-gray-400 focus:outline-none ml-2'
-                  onClick={closeEditModal}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
+        <div style={{ minHeight: '90vh' }} className='d-flex align-items-center justify-content-center bg-light'>
+          <div className='spinner-border text-primary' role='status'>
+            <span className='sr-only'>Loading...</span>
           </div>
         </div>
       )}
-
-      {isConfirmingDelete && (
-        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 px-2'>
-          <div className='bg-white rounded-lg p-6 shadow-lg w-96'>
-            <h3 className='text-xl font-semibold mb-4'>Confirm Deletion</h3>
-            <p className='mb-4'>Are you sure you want to delete this question and answer?</p>
-            <div className='flex justify-end'>
-              <button
-                onClick={confirmDeleteQandA}
-                className='px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none'
-              >
+      <div className='mt-4'>
+        <h3 className='h5 font-weight-bold mb-3'>List of Questions and Answers</h3>
+        {item.map((data, index) => (
+          <div key={index} className='border rounded mb-2 p-3'>
+            <h4 className='h6'>{data.question}</h4>
+            <p>{data.answer}</p>
+            <div className='d-flex justify-content-end'>
+              <button onClick={() => openEditModal(index)} className='btn btn-primary mr-2'>
+                Edit
+              </button>
+              <button onClick={() => deleteQandA(index)} className='btn btn-danger'>
                 Delete
               </button>
-              <button
-                onClick={() => setIsConfirmingDelete(false)}
-                className='px-4 py-2 text-gray-700 bg-gray-300 rounded hover:bg-gray-400 focus:outline-none ml-2'
-              >
-                Cancel
-              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Confirmation Modal */}
+      {isConfirmingDelete && (
+        <div className='modal show d-block' style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+          <div className='modal-dialog'>
+            <div className='modal-content'>
+              <div className='modal-header'>
+                <h5 className='modal-title'>Confirm Delete</h5>
+                <button onClick={() => setIsConfirmingDelete(false)} className='close'>
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div className='modal-body'>
+                <p>Are you sure you want to delete this question and answer?</p>
+              </div>
+              <div className='modal-footer'>
+                <button onClick={() => setIsConfirmingDelete(false)} className='btn btn-secondary'>
+                  Cancel
+                </button>
+                <button onClick={confirmDeleteQandA} className='btn btn-danger'>
+                  Confirm Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Modal */}
+      {isEditing && (
+        <div className='modal show d-block' style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+          <div className='modal-dialog'>
+            <div className='modal-content'>
+              <div className='modal-header'>
+                <h5 className='modal-title'>Edit Question and Answer</h5>
+                <button onClick={closeEditModal} className='close'>
+                  <span>&times;</span>
+                </button>
+              </div>
+              <form onSubmit={updateQandA} className='modal-body'>
+                <div className='form-group'>
+                  <label className='form-label'>Question:</label>
+                  <input
+                    type='text'
+                    value={newQuestion}
+                    onChange={(e) => setNewQuestion(e.target.value)}
+                    className={`form-control ${questionError ? 'is-invalid' : ''}`}
+                    placeholder='Enter the question'
+                  />
+                  {questionError && <div className='invalid-feedback'>{questionError}</div>}
+                </div>
+                <div className='form-group'>
+                  <label className='form-label'>Answer:</label>
+                  <input
+                    type='text'
+                    value={newAnswer}
+                    onChange={(e) => setNewAnswer(e.target.value)}
+                    className={`form-control ${answerError ? 'is-invalid' : ''}`}
+                    placeholder='Enter the answer'
+                  />
+                  {answerError && <div className='invalid-feedback'>{answerError}</div>}
+                </div>
+                <div className='modal-footer'>
+                  <button type='button' onClick={closeEditModal} className='btn btn-secondary'>
+                    Cancel
+                  </button>
+                  <button type='submit' className='btn btn-success'>
+                    Update Question and Answer
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
