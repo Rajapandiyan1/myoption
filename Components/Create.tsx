@@ -270,7 +270,6 @@ const FAQInput = () => {
                     </div>
                 </div>
             )}
-
             <div className="fixed-bottom text-center mb-4">
                 <button
                     onClick={handleSubmitTopic}
