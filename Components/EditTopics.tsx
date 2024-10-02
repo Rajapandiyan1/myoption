@@ -42,7 +42,7 @@ function EditTopics({ editId }) {
         }
 
         if (!data.ok) throw new Error('Failed to fetch data');
-        
+
         setTopicName(data.data.topics);
         setItem(data.data.QandA);
       } catch (error) {
@@ -91,6 +91,7 @@ function EditTopics({ editId }) {
       showToastMessage('Failed to delete the question and answer.', 'error');
     } finally {
       setIsConfirmingDelete(false);
+      setDeleteIndex(null);
     }
   };
 
@@ -221,7 +222,7 @@ function EditTopics({ editId }) {
           Topics: <span className='font-semibold text-blue-800 uppercase'>{topicsName}</span>
         </h1>
       )}
-      
+
       {!loading && (
         <div className='mt-6'>
           <h3 className='text-xl font-semibold mb-2'>Add New Question and Answer</h3>
