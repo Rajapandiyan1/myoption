@@ -159,32 +159,8 @@ function Option() {
             )}
 
             {/* Modal for delete confirmation */}
-            {/* <div className='modal fade show' tabIndex={-1} style={{ display: 'block' }} aria-modal='true'>
-          <div className='modal-dialog'>
-            <div className='modal-content'>
-              <div className='modal-header'>
-                <h5 className='modal-title'>Confirm Deletion</h5>
-                <button type='button' className='close' onClick={() => setIsConfirmingDelete(false)}>
-                  <span>&times;</span>
-                </button>
-              </div>
-              <div className='modal-body'>
-                <p>Are you sure you want to delete this question and answer?</p>
-              </div>
-              <div className='modal-footer'>
-                <button type='button' className='btn btn-secondary' onClick={() => setIsConfirmingDelete(false)}>
-                  Cancel
-                </button>
-                <button type='button' disabled={dele} className='btn btn-danger' onClick={confirmDeleteQandA}>
-                  Confirm
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
             {isModalOpen && (
-  <div className="modal show fade">
+  <div className="modal fade show d-flex justify-content-center align-items-center">
     <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content rounded-lg shadow-lg">
         <div className="modal-header">
