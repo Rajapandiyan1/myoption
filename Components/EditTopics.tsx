@@ -273,7 +273,9 @@ function EditTopics({ editId }) {
         item.map((qAndA, index) => (
           <div key={index} className='d-flex justify-content-between align-items-center border-bottom py-3'>
             <div>
+              <p className='text-black'>Q {index+1} .</p>
               <p className='font-weight-bold'>{qAndA.question}</p>
+              <p className='text-black'>Ans :</p>
               <p>{qAndA.answer}</p>
             </div>
             <div>
