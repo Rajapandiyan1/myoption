@@ -64,8 +64,8 @@ function Qstart({ setqstart, id }) {
   const currentAnswer = item[currentQuestionIndex]?.answer;
 
   return (
-    <div style={{minHeight:'90vh'}} className="d-flex flex-column justify-center items-center bg-gray-100  p-4">
-      <h1 className="text-3xl font-bold mb-8">Topic: {topicsName}</h1>
+    <div style={{minHeight:'70vh'}} className="d-flex flex-column justify-center items-center bg-gray-100  p-4">
+      <h1 className="text-3xl font-bold mb-5">Topic: {topicsName}</h1>
 
       {loading ? (
         <p>Loading questions...</p>
@@ -97,7 +97,7 @@ function Qstart({ setqstart, id }) {
       )}
 
       {/* Navigation Buttons */}
-      <div className="mt-6 flex space-x-4">
+      <div className="mt-6 flex space-x-4 mt-4">
         {/* Show the "Go Back" button when finished or no questions are available */}
         {finished || noQuestionsAvailable ? (
           <button
@@ -109,7 +109,7 @@ function Qstart({ setqstart, id }) {
         ) : (
           <>
             {/* Show "Show Answer" button if the answer is not shown */}
-            {!showAnswer && (
+            {!showAnswer &&  !loading &&(
               <button
                 className="px-6 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600"
                 onClick={() => setShowAnswer(true)}
