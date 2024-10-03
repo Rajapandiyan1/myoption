@@ -46,7 +46,7 @@ function Option() {
     // Function to delete topics
     async function deleteTopics() {
         try {
-            const response = await fetch(`${process.env.PUBLIC_API_URL}/deleteTopics/${topicToDelete}`, {
+            const response = await fetch(`https://server-1-nu7h.onrender.com/deleteTopics/${topicToDelete}`, {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {
