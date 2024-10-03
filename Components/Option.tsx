@@ -4,7 +4,7 @@ import Qstart from './Qstart';
 import { setAthen } from '@/Store/Athen';
 import { useDispatch } from 'react-redux';
 
-function Option() {
+function Option({setActiveTab}) {
     const param=useParams();
     const [topics,settopics]=useState([]);
     const [loading,setload]=useState(false);
@@ -43,7 +43,7 @@ function Option() {
 </div>
 }
 
-{qstart && <Qstart setqstart={start} id={topicsid}/>}
+{qstart && <Qstart setActiveTab={setActiveTab} setqstart={start} id={topicsid}/>}
 {!loading && !qstart && topics.length!=0 &&
                 <div className="max-w-4xl mx-auto p-2">
             <h1 className="text-2xl font-bold mb-6">All Topics</h1>

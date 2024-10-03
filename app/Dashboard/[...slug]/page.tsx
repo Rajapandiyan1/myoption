@@ -42,7 +42,7 @@ axios.get(`https://server-1-nu7h.onrender.com/authperson`,{withCredentials:true}
     const renderContent = () => {
         switch (activeTab) {
             case 'Options':
-                return <Option />;
+                return <Option setActiveTab={setActiveTab}/>;
             case 'Create Option':
                 return <Create />;
             case 'Edit Option':

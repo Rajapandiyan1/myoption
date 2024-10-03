@@ -201,11 +201,11 @@ function Option() {
             {edit && 
             
             <>
-            <button onClick={()=>{setedit(false)}} className="flex hover:text-blue-400 items-center space-x-2 text-gray-700 hover:text-gray-900">
+            <button  onClick={()=>{setedit(false)}} className="flex hover:text-blue-400 items-center space-x-2 text-gray-700 btn btn-sm btn-secondaryhover:text-gray-900">
   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
   </svg>
-  <span>Back</span>
+  <span> {"<"} Back</span>
 </button>
 <EditTopics editId={editId}/>
             </>}
