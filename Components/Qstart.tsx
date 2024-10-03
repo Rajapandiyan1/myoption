@@ -64,7 +64,7 @@ function Qstart({ setqstart, id }) {
   const currentAnswer = item[currentQuestionIndex]?.answer;
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-100 min-h-screen p-4">
+    <div className="flex justify-center items-center bg-gray-100 min-h-screen p-4">
       <h1 className="text-3xl font-bold mb-8">Topic: {topicsName}</h1>
 
       {loading ? (
