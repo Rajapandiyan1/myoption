@@ -160,30 +160,40 @@ function Option() {
 
             {/* Modal for delete confirmation */}
             {isModalOpen && (
-  <div className="modal-backdrop fade show d-flex justify-content-center align-items-center" style={{position:'fixed',inset:0,backgroundColor:"white",zIndex:50}}>
-  <div className="modal-dialog modal-dialog-centered">
+  <div className="modal-backdrop fade show d-flex justify-content-center align-items-center">
+    <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content rounded-lg shadow-lg">
-          <div className="modal-header">
-              <h5 className="modal-title">Confirm Deletion</h5>
-          </div>
-          <div className="modal-body">
-              <p>
-                  Are you sure you want to delete <span className="text-primary font-weight-bold">{deletetopic}</span> topic?
-              </p>
-          </div>
-          <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" onClick={()=>{closeModal()}}>
-                  Cancel
-              </button>
-              <button type="button" className="btn btn-danger" onClick={()=>{deleteTopics()}}>
-                  Delete
-              </button>
-          </div>
+        <div className="modal-header">
+          <h5 className="modal-title">Confirm Deletion</h5>
+          <button
+            type="button"
+            className="close"
+            onClick={closeModal}
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div className="modal-body">
+          <p>
+            Are you sure you want to delete{' '}
+            <span className="text-primary font-weight-bold">{deletetopic}</span>{' '}
+            topic?
+          </p>
+        </div>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary" onClick={closeModal}>
+            Cancel
+          </button>
+          <button type="button" className="btn btn-danger" onClick={deleteTopics}>
+            Delete
+          </button>
+        </div>
       </div>
+    </div>
   </div>
-</div>
-
 )}
+
 
             {edit && 
             
