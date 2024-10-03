@@ -98,7 +98,7 @@ axios.get(`https://server-1-nu7h.onrender.com/authperson`,{withCredentials:true}
     <p className="text-lg text-gray-600 mb-6">
       The link you followed may be broken, or the page may have been removed.
     </p>
-    <Link href={'http://localhost:3000/'+DashboardUrl.path}  className="text-blue-500 hover:underline">Go back to Dashboard</Link>
+    <Link href={'https://myoption-u4kk-git-master-rajapandiyan1s-projects.vercel.app/'+DashboardUrl.path}  className="text-blue-500 hover:underline">Go back to Dashboard</Link>
   </div>
              </div>
   }
