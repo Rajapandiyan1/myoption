@@ -278,7 +278,7 @@ function EditTopics({ editId }) {
     <p className="text-black mb-1">Ans:</p>
     <p>{qAndA.answer}</p>
   </div>
-  <div className="mt-3 mt-md-0 d-flex justify-content-end  flex-md-row">
+  <div className="mt-3 w-100 mt-md-0 d-flex justify-content-end  flex-md-row">
     <button
       onClick={() => openEditModal(index)}
       className="btn btn-primary text-white "
