@@ -17,6 +17,7 @@ function Option() {
     const [deleteIndex, setDeleteIndex] = useState(null);  // Track the index of the topic to delete
     const [deletetopic,setdeletetopic]=useState('');
     const [edit,setedit]=useState(false);
+    const [dele,setdele]=useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -45,6 +46,7 @@ function Option() {
 
     // Function to delete topics
     async function deleteTopics() {
+        setdele(true)
         try {
             const response = await fetch(`https://server-1-nu7h.onrender.com/deleteTopics/${topicToDelete}`, {
                 method: 'DELETE',
@@ -76,6 +78,7 @@ function Option() {
             setToastMessage(error.message || 'Error deleting the topic');
             setToastType('error');
         } finally {
+            setdele(false)
             setIsModalOpen(false);  // Close the modal after deletion
         }
     }
@@ -182,10 +185,10 @@ function Option() {
           </p>
         </div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-secondary" onClick={closeModal}>
+          <button type="button" disabled={dele} className="btn btn-secondary" onClick={closeModal}>
             Cancel
           </button>
-          <button type="button" className="btn btn-danger" onClick={deleteTopics}>
+          <button type="button" disabled={dele} className="btn btn-danger" onClick={deleteTopics}>
             Delete
           </button>
         </div>
