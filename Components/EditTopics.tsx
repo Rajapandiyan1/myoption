@@ -14,6 +14,8 @@ function EditTopics({ editId }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const dispatch = useDispatch();
+  const [qloading,setqloading]=useState(false)
+  const [dele,setdele]=useState(false);
 
   // Toast state
   const [toastMessage, setToastMessage] = useState('');
@@ -61,6 +63,7 @@ function EditTopics({ editId }) {
   };
 
   const confirmDeleteQandA = async () => {
+    setdele(true)
     if (deleteIndex === null) return;
 
     try {
@@ -92,10 +95,12 @@ function EditTopics({ editId }) {
     } finally {
       setIsConfirmingDelete(false);
       setDeleteIndex(null);
+      setdele(false)
     }
   };
 
   const addQandA = async (e) => {
+    setqloading(true)
     e.preventDefault();
     setQuestionError('');
     setAnswerError('');
@@ -133,6 +138,8 @@ function EditTopics({ editId }) {
     } catch (error) {
       console.error(error);
       showToastMessage('Failed to add the question and answer.', 'error');
+    }finally{
+      setqloading(false)
     }
   };
 
@@ -249,7 +256,7 @@ function EditTopics({ editId }) {
               />
               {answerError && <div className='invalid-feedback'>{answerError}</div>}
             </div>
-            <button type='submit' className='btn btn-primary mt-3'>
+            <button type='submit' disabled={qloading} className='btn btn-primary mt-3'>
               Add Question and Answer
             </button>
           </form>
@@ -295,7 +302,7 @@ function EditTopics({ editId }) {
                 <button type='button' className='btn btn-secondary' onClick={() => setIsConfirmingDelete(false)}>
                   Cancel
                 </button>
-                <button type='button' className='btn btn-danger' onClick={confirmDeleteQandA}>
+                <button type='button' disabled={dele} className='btn btn-danger' onClick={confirmDeleteQandA}>
                   Confirm
                 </button>
               </div>
