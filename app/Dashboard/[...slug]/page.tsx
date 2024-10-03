@@ -60,7 +60,7 @@ axios.get(`https://server-1-nu7h.onrender.com/authperson`,{withCredentials:true}
 
         {!loading && Athens.Athen && urls   &&<div className="max-w-7xl mx-auto px-2">
             {/* Navigation Tabs */}
-            <div className="flex sm:justify-start justify-around  flex-row space-y-2 sm:space-y-0 sm:space-x-4 border-b border-gray-300 mt-1 mb-1 pb-3">
+            <div className="flex sm:justify-start justify-around  flex-row space-y-2 sm:space-y-0 sm:space-x-4 border-b border-gray-300 mt-1 mb-1 pb-3 pt-3">
     {['Options', 'Create Option', 'Edit Option'].map((tab) => (
         <button
             key={tab}
