@@ -64,9 +64,11 @@ function Qstart({setActiveTab, setqstart, id }) {
   const currentAnswer = item[currentQuestionIndex]?.answer;
 
   return (
+    <>
+      <button onClick={()=>{setActiveTab(false)}} className='btn btn-sm btn-secondary'>Back</button>
+
     <div style={{minHeight:'70vh'}} className="d-flex flex-column justify-center items-center bg-gray-100  p-4">
 
-      <button onClick={()=>{setActiveTab(false)}} className='btn btn-sm btn-secondary'>Back</button>
       <h1 className="text-3xl font-bold mb-5">Topic: {topicsName}</h1>
 
       {loading ? (
@@ -133,6 +135,7 @@ function Qstart({setActiveTab, setqstart, id }) {
         )}
       </div>
     </div>
+    </>
   );
 }
 
