@@ -16,6 +16,7 @@ const FAQInput = () => {
     const [topicError, setTopicError] = useState('');
     const [questionError, setQuestionError] = useState('');
     const [answerError, setAnswerError] = useState('');
+    const [submit,setsubmit]=useState(false);
     const dispatches = useDispatch();
 
     const param = useParams();
@@ -73,7 +74,7 @@ const FAQInput = () => {
 
     const handleSubmitTopic = async (e) => {
         e.preventDefault();
-
+        setsubmit(true)
         const data = {
             topics: topicName,  // Single topic
             QandA: questionsAndAnswers,  // List of Q&A
@@ -100,6 +101,8 @@ const FAQInput = () => {
             console.error('Error submitting topic:', error);
             setToastMessage('Error submitting topic.');
             setToastType('error');
+        }finally{
+            setsubmit(false)
         }
     };
 
@@ -271,7 +274,7 @@ const FAQInput = () => {
                 </div>
             )}
             <div className="fixed-bottom text-center mb-4">
-                <button
+                <button disabled={submit}
                     onClick={handleSubmitTopic}
                     className="btn btn-success"
                 >
