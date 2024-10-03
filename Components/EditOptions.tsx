@@ -201,9 +201,9 @@ function Option() {
             {edit && 
             
             <>
-            <button  onClick={()=>{setedit(false)}} className=" hover:text-blue-400 space-x-2 text-gray-700 btn btn-sm btn-secondary hover:text-gray-900">
+            <button  onClick={()=>{setedit(false)}} className=" hover:text-blue-400 mt-1 ms-1 space-x-2 text-gray-700 btn btn-sm btn-secondary hover:text-gray-900">
   
-  <span> {"< Back"} </span>
+  <span> {"Back"} </span>
 </button>
 <EditTopics editId={editId}/>
             </>}

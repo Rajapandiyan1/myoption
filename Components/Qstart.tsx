@@ -65,7 +65,7 @@ function Qstart({setActiveTab, setqstart, id }) {
 
   return (
     <>
-      <button onClick={()=>{setActiveTab(false)}} className='btn btn-sm btn-secondary'>Back</button>
+      <button onClick={()=>{setqstart(false)}} className='btn btn-sm btn-secondary'>Back</button>
 
     <div style={{minHeight:'70vh'}} className="d-flex flex-column justify-center items-center bg-gray-100  p-4">
 
@@ -106,7 +106,7 @@ function Qstart({setActiveTab, setqstart, id }) {
         {finished || noQuestionsAvailable ? (
           <button
             className="px-3 py-3 mb-4 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
-            onClick={() => setqstart("Options")}
+            onClick={() => setqstart(false)}
           >
             Go Back
           </button>
