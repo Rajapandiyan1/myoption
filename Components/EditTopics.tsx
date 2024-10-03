@@ -281,7 +281,7 @@ function EditTopics({ editId }) {
   <div className="mt-3 mt-md-0 d-flex  flex-md-row">
     <button
       onClick={() => openEditModal(index)}
-      className="btn btn-primary text-white mb-2 mb-md-0"
+      className="btn btn-primary text-white"
     >
       Edit
     </button>
