@@ -16,6 +16,7 @@ function EditTopics({ editId }) {
   const dispatch = useDispatch();
   const [qloading,setqloading]=useState(false)
   const [dele,setdele]=useState(false);
+  const [upd,setupd]=useState(false)
 
   // Toast state
   const [toastMessage, setToastMessage] = useState('');
@@ -161,6 +162,7 @@ function EditTopics({ editId }) {
   };
 
   const updateQandA = async (e) => {
+    setupd(true)
     e.preventDefault();
     setQuestionError('');
     setAnswerError('');
@@ -201,6 +203,8 @@ function EditTopics({ editId }) {
     } catch (error) {
       console.error(error);
       showToastMessage('Failed to update the question and answer.', 'error');
+    }finally{
+      setupd(false)
     }
   };
 
@@ -347,10 +351,10 @@ function EditTopics({ editId }) {
                 </div>
               </form>
               <div className='modal-footer'>
-                <button type='button' className='btn btn-secondary' onClick={closeEditModal}>
+                <button type='button' disabled={upd} className='btn btn-secondary' onClick={closeEditModal}>
                   Cancel
                 </button>
-                <button type='submit' className='btn btn-primary' onClick={updateQandA}>
+                <button type='submit' disabled={upd} className='btn btn-primary' onClick={updateQandA}>
                   Update
                 </button>
               </div>
