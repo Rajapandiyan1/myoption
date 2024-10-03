@@ -152,7 +152,7 @@ function Option() {
                         ${toastType === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}
                         animate-fadeIn 
                         w-full sm:w-96 lg:w-1/3 max-w-xs`}
-                    style={{ zIndex: 1000 }}
+                    style={{ zIndex: 100 }}
                 >
                     {toastMessage}
                 </div>
@@ -160,7 +160,7 @@ function Option() {
 
             {/* Modal for delete confirmation */}
             {isModalOpen && (
-  <div className="modal-backdrop fade show d-flex justify-content-center align-items-center" style={{position:'fixed',inset:0,backgroundColor:"#4B5563BF",zIndex:1050}}>
+  <div className="modal-backdrop fade show d-flex justify-content-center align-items-center" style={{position:'fixed',inset:0,backgroundColor:"white",zIndex:50}}>
   <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content rounded-lg shadow-lg">
           <div className="modal-header">
