@@ -65,7 +65,7 @@ function Qstart({setActiveTab, setqstart, id }) {
 
   return (
     <>
-      <button onClick={()=>{setqstart(false)}} className='btn btn-sm btn-secondary'>Back</button>
+      <button onClick={()=>{setqstart(false)}} className='btn mb-3 mt-1 ms-2 btn-sm btn-secondary'>Back</button>
 
     <div style={{minHeight:'70vh'}} className="d-flex flex-column justify-center items-center bg-gray-100  p-4">
 
