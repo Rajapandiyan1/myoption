@@ -115,7 +115,7 @@ function Qstart({setActiveTab, setqstart, id }) {
             {/* Show "Show Answer" button if the answer is not shown */}
             {!showAnswer &&  !loading &&(
               <button
-                className="px-6 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600"
+                className="px-3 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600"
                 onClick={() => setShowAnswer(true)}
               >
                 Show Answer
@@ -125,7 +125,7 @@ function Qstart({setActiveTab, setqstart, id }) {
             {/* Show "Next Question" button after answer is shown */}
             {showAnswer && (
               <button
-                className="px-6 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
+                className="px-3 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
                 onClick={handleNextQuestion}
               >
                 Next Question
