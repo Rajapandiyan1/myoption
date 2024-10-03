@@ -271,22 +271,29 @@ function EditTopics({ editId }) {
         <p>Loading...</p>
       ) : (
         item.map((qAndA, index) => (
-          <div key={index} className='d-flex justify-content-between align-items-center border-bottom py-3'>
-            <div>
-              <p className='text-black'>Q {index+1} .</p>
-              <p className='font-weight-bold'>{qAndA.question}</p>
-              <p className='text-black'>Ans :</p>
-              <p>{qAndA.answer}</p>
-            </div>
-            <div>
-              <button onClick={() => openEditModal(index)} className='btn btn-primary text-white'>
-                Edit
-              </button>
-              <button onClick={() => deleteQandA(index)} className='btn btn-danger ms-3 text-white'>
-                Delete
-              </button>
-            </div>
-          </div>
+          <div key={index} className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center border-bottom py-3">
+  <div>
+    <p className="text-black mb-1">Q {index + 1}.</p>
+    <p className="font-weight-bold">{qAndA.question}</p>
+    <p className="text-black mb-1">Ans:</p>
+    <p>{qAndA.answer}</p>
+  </div>
+  <div className="mt-3 mt-md-0 d-flex flex-column flex-md-row">
+    <button
+      onClick={() => openEditModal(index)}
+      className="btn btn-primary text-white mb-2 mb-md-0"
+    >
+      Edit
+    </button>
+    <button
+      onClick={() => deleteQandA(index)}
+      className="btn btn-danger text-white ms-md-3"
+    >
+      Delete
+    </button>
+  </div>
+</div>
+
         ))
       )}
 
