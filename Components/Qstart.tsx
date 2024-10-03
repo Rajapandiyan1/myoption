@@ -101,11 +101,11 @@ function Qstart({setActiveTab, setqstart, id }) {
       )}
 
       {/* Navigation Buttons */}
-      <div className="mt-6 flex space-x-4 mt-4">
+      <div className="mt-6 flex space-x-1 mt-4">
         {/* Show the "Go Back" button when finished or no questions are available */}
         {finished || noQuestionsAvailable ? (
           <button
-            className="px-6 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
+            className="px-3 py-3 mb-4 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
             onClick={() => setqstart("Options")}
           >
             Go Back
