@@ -233,23 +233,23 @@ function EditTopics({ editId }) {
                 type='text'
                 value={newQuestion}
                 onChange={(e) => setNewQuestion(e.target.value)}
-                className={`form-control ${questionError ? 'is-invalid' : ''}`}
+                className={`form-control mt-2 ${questionError ? 'is-invalid' : ''}`}
                 placeholder='Enter the question'
               />
               {questionError && <div className='invalid-feedback'>{questionError}</div>}
             </div>
             <div className='form-group'>
-              <label>Answer:</label>
+              <label className='mt-2'>Answer:</label>
               <input
                 type='text'
                 value={newAnswer}
                 onChange={(e) => setNewAnswer(e.target.value)}
-                className={`form-control ${answerError ? 'is-invalid' : ''}`}
+                className={`form-control mt-2 ${answerError ? 'is-invalid' : ''}`}
                 placeholder='Enter the answer'
               />
               {answerError && <div className='invalid-feedback'>{answerError}</div>}
             </div>
-            <button type='submit' className='btn btn-primary'>
+            <button type='submit' className='btn btn-primary mt-3'>
               Add Question and Answer
             </button>
           </form>
@@ -269,7 +269,7 @@ function EditTopics({ editId }) {
               <button onClick={() => openEditModal(index)} className='btn btn-primary text-white'>
                 Edit
               </button>
-              <button onClick={() => deleteQandA(index)} className='btn btn-danger text-white'>
+              <button onClick={() => deleteQandA(index)} className='btn btn-danger ms-3 text-white'>
                 Delete
               </button>
             </div>
