@@ -48,7 +48,7 @@ axios.get(`https://server-1-nu7h.onrender.com/authperson`,{withCredentials:true}
             case 'Edit Option':
                 return <Edit/>;
             default:
-                return <Option />;
+                return <Option setActiveTab={setActiveTab}/>;
         }
     };
 
