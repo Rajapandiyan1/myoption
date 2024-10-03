@@ -281,13 +281,13 @@ function EditTopics({ editId }) {
   <div className="mt-3 mt-md-0 d-flex justify-content-end  flex-md-row">
     <button
       onClick={() => openEditModal(index)}
-      className="btn btn-primary text-white"
+      className="btn btn-primary text-white "
     >
       Edit
     </button>
     <button
       onClick={() => deleteQandA(index)}
-      className="btn btn-danger text-white ms-md-3"
+      className="btn btn-danger text-white ms-3"
     >
       Delete
     </button>
