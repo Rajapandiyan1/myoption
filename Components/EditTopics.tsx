@@ -272,13 +272,13 @@ function EditTopics({ editId }) {
       ) : (
         item.map((qAndA, index) => (
           <div key={index} className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center border-bottom py-3">
-  <div>
+  <div className='col-md-9'>
     <p className="text-black mb-1">Q {index + 1}.</p>
     <p className="font-weight-bold">{qAndA.question}</p>
     <p className="text-black mb-1">Ans:</p>
     <p>{qAndA.answer}</p>
   </div>
-  <div className="mt-3 w-100 mt-md-0 d-flex justify-content-end  flex-md-row">
+  <div className="mt-3 col-md-3 w-100 mt-md-0 d-flex justify-content-end  flex-md-row">
     <button
       onClick={() => openEditModal(index)}
       className="btn btn-primary text-white "
