@@ -60,7 +60,7 @@ axios.get(`https://server-1-nu7h.onrender.com/authperson`,{withCredentials:true}
 
         {!loading && Athens.Athen && urls   &&<div className="max-w-7xl mx-auto px-2">
             {/* Navigation Tabs */}
-            <div className="flex sm:justify-start justify-around  flex-row space-y-2 sm:space-y-0 sm:space-x-4 border-b border-gray-300 mt-1 mb-1 pb-3 pt-3">
+            <div className="flex sm:justify-start justify-around  flex-row space-y-2 sm:space-y-0 sm:space-x-4 border-b border-gray-300 pb-3 pt-3">
     {['Options', 'Create Option', 'Edit Option'].map((tab) => (
         <button
             key={tab}
@@ -98,7 +98,7 @@ axios.get(`https://server-1-nu7h.onrender.com/authperson`,{withCredentials:true}
     <p className="text-lg text-gray-600 mb-6">
       The link you followed may be broken, or the page may have been removed.
     </p>
-    <Link href={'https://myoption-u4kk-git-master-rajapandiyan1s-projects.vercel.app/'+DashboardUrl.path}  className="text-blue-500 hover:underline">Go back to Dashboard</Link>
+    <Link href={decodeURIComponent('https://myoption-u4kk-git-master-rajapandiyan1s-projects.vercel.app/'+DashboardUrl.path)}  className="text-blue-500 hover:underline">Go back to Dashboard</Link>
   </div>
              </div>
   }
